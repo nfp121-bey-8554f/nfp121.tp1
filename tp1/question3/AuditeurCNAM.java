@@ -45,7 +45,21 @@ public class AuditeurCNAM {
      *         homonymes...
      */
     public String login() {
-        return "";// à compléter
+        String n;
+        String p;
+        //utilisation de Math.min pour eviter StringIndexOutOfBoundsException
+        n = this.nom.substring(0,Math.min(this.nom.length(),6));
+        //premiere lettre du prénom
+        p = this.prenom.substring(0,1);
+        //minuscule
+        n = n.toLowerCase();
+        p = p.toLowerCase();
+        //faire une méthode pour les accents
+        n = pasAccents(n);
+        p = pasAccents(p);
+        n = n.replaceAll("[^a-z]","_");
+        p = p.replaceAll("[^a-z]","_");
+        return n+"_"+p;
     }
 
     /**
@@ -54,25 +68,39 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return this.nom;
     }
-
     /**
      * Lecture du prénom de l'auditeur.
      * 
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return this.prenom;
     }
-
+      /**
+    * Méthode pour enlever les accents
+    * Soumettre un String avec accents
+    * @return String sans accents
+    */
+    public String pasAccents(String x)
+    { //Manque surement des accents
+    String accents = "àâäãéèêëîïìöôòõüûùÀÂÄÃÉÈÊËÎÏÌÖÔÒÕÜÛÙ"; //tableau regroupant les accents
+    String paccents = "aaaaeeeeiiioooouuuaaaaeeeeiiioooouuu";//tableau ayant les mêmes lettres mais sans accents
+    int l = accents.length();//longueur du tableau
+    for(int i = 0; i<l ; i++)
+    {
+    x = x.replace(accents.charAt(i), paccents.charAt(i));
+    }
+    return x;
+    }
     /**
      * Lecture du matricule de l'auditeur.
      * 
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return this.matricule;
     }
 
     /**

@@ -10,8 +10,8 @@ import java.util.*;
  * a modification of the general purpose Canvas, specially made for the BlueJ
  * "shapes" example.
  *  blabla
- * @author: Bruce Quig
- * @author: Michael Kolling (mik)
+ * 
+ * 
  * 
  * @version: 1.6 (shapes)
  */
